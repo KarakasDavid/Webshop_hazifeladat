@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Product Details</title>
+  <style>
+    .red-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+    }
+    .green-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+<h1>Product Details</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td th:text="${product.name}"></td>
+    <td>
+      <span th:class="${product.category.name == 0} ? 'red-circle' : 'green-circle'"></span>
+    </td>
+  </tr>
+</table>
+<form action="#" th:action="@{/hello}" method="get">
+  <button type="submit">Go to Hello Page</button>
+</form>
+</body>
+</html>

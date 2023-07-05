@@ -1,0 +1,43 @@
+!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Cart List</title>
+    <style>
+        .red-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+        }
+        .green-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>Cart List</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+    <tr th:each="product : ${cart.products}">
+        <td th:text="${product.name}"></td>
+        <td>
+            <span th:if="${product.type == 0}" class="red-circle"></span>
+            <span th:if="${product.type == 1}" class="green-circle"></span>
+        </td>
+    </tr>
+</table>
+
+<form action="#" th:action="@{/hello}" method="get">
+    <button type="submit">Go to Hello Page</button>
+</form>
+</body>
+</html>

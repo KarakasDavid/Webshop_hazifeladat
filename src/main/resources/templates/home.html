@@ -1,0 +1,16 @@
+ <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Welcome!</h1>
+
+<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+
+<form action="#" th:action="@{/register_page}" method="get">
+    <button type="submit">Go to Register Page</button>
+</form>
+
+</body>
+</html>

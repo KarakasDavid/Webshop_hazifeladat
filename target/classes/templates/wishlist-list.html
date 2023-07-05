@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Cart List</title>
+  <style>
+    .red-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+    }
+    .green-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="product-list.css">
+</head>
+<body>
+<h1>Cart List</h1>
+
+<div class="category-box">
+  <h2>Wishlist Products</h2>
+  <table id="wishlist-products">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr th:each="product : ${wishlist}">
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.price}"></td>
+      <td>
+        <span th:if="${product.category.name == 'food'}" class="red-circle"></span>
+        <span th:if="${product.category.name == 'flower'}" class="green-circle"></span>
+      </td>
+      <td>
+        <form th:action="@{/wishlist/removeProduct}" method="POST">
+          <input type="hidden" name="cartId" value="1" /> <!-- Set the desired cart ID -->
+          <input type="hidden" name="productId" th:value="${product.id}" />
+          <button type="submit">Remove</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<form action="#" th:action="@{/hello}" method="get">
+  <button type="submit">Go to Hello Page</button>
+</form>
+</body>
+</html>
